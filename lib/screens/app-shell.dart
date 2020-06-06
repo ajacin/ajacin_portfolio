@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:ajacin_portfolio/store/counter/counter.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class AppShell extends StatefulWidget {
   AppShell({Key key, this.title}) : super(key: key);
@@ -11,11 +12,10 @@ class AppShell extends StatefulWidget {
 }
 
 class _AppShellState extends State<AppShell> {
-  int _counter = 0;
+  final _counterHandle = Counter();
 
   void _incrementCounter() {
     setState(() {
-      _counter++;
     });
   }
 
@@ -32,15 +32,17 @@ class _AppShellState extends State<AppShell> {
             Text(
               'You have pushed the button this many timess:',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            Observer(
+              builder: (context) => Text(
+                '${_counterHandle.value}',
+                style: Theme.of(context).textTheme.headline4,
+              ),
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: _counterHandle.incrementCounter,
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ),
