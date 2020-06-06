@@ -13,5 +13,10 @@ abstract class CounterBase with Store{
     value++;
   }
 
+  @action
+  void decrementCounter(){
+    value--;
+  }
+
 
 }

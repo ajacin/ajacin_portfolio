@@ -41,10 +41,23 @@ class _AppShellState extends State<AppShell> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: Column(
+        mainAxisAlignment:MainAxisAlignment.end,
+        children:<Widget>[
+          FloatingActionButton(
         onPressed: _counterHandle.incrementCounter,
         tooltip: 'Increment',
         child: Icon(Icons.add),
+      ),
+      SizedBox(
+        height:5,
+      ),
+      FloatingActionButton(
+        onPressed: _counterHandle.decrementCounter,
+        tooltip: 'Decrement',
+        child: Icon(Icons.remove),
+      ),
+        ]
       ),
     );
   }

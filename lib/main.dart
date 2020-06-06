@@ -12,7 +12,7 @@ class AjacinPortfolio extends StatelessWidget {
     return MaterialApp(
       title: 'ARUN JACOB',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.yellow,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: AppShell(title: 'ARUN JACOB'),
