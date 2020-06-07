@@ -10,7 +10,8 @@ class AjacinPortfolio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ARUN JACOB',
+      title: 'arunjacob | bio',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.yellow,
         visualDensity: VisualDensity.adaptivePlatformDensity,
