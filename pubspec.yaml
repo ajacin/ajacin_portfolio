@@ -25,6 +25,8 @@ dependencies:
     sdk: flutter
   mobx:
   flutter_mobx:
+  google_fonts:
+  animated_text_kit: ^2.2.0
 
 
   # The following adds the Cupertino Icons font to your application.

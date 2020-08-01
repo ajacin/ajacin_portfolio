@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ajacin_portfolio/store/counter/counter.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:ajacin_portfolio/widgets/navigationbar/navigation-bar.dart';
+import 'package:ajacin_portfolio/widgets/introductionpanel/introduction-panel.dart';
 
 class AppShell extends StatefulWidget {
   AppShell({Key key, this.title}) : super(key: key);
@@ -13,7 +15,7 @@ class AppShell extends StatefulWidget {
 
 class _AppShellState extends State<AppShell> {
   final colorArray = [
-    0xff03071e,
+    0xfffdfffc,
     0xff6930c3,
     0xfffdfffc,
     0xff03071e,
@@ -31,20 +33,20 @@ class _AppShellState extends State<AppShell> {
       // appBar: AppBar(
       //   title: Text(widget.title),
       // ),
-      drawer: Drawer(
-        child: ListView(
-          children: <Widget>[
-            ListTile(
-              title: Text("Ttem 1"),
-              trailing: Icon(Icons.arrow_forward),
-            ),
-            ListTile(
-              title: Text("Item 2"),
-              trailing: Icon(Icons.arrow_forward),
-            ),
-          ],
-        ),
-      ),
+      // drawer: Drawer(
+      //   child: ListView(
+      //     children: <Widget>[
+      //       ListTile(
+      //         title: Text("Ttem 1"),
+      //         trailing: Icon(Icons.arrow_forward),
+      //       ),
+      //       ListTile(
+      //         title: Text("Item 2"),
+      //         trailing: Icon(Icons.arrow_forward),
+      //       ),
+      //     ],
+      //   ),
+      // ),
       body: Center(
         child: PageView(
           scrollDirection: Axis.vertical,
@@ -54,17 +56,14 @@ class _AppShellState extends State<AppShell> {
               padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 60),
               color: Color(colorArray[0]),
               alignment: Alignment.topCenter,
-              child: ConstrainedBox(
-                  constraints: BoxConstraints(maxWidth: 1200),
-                  child: Text(
-                    'ARUN JACOB',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 60.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  )),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children:<Widget>[
+                  NavigationBar(),
+                  IntroductionPanel(),
+                  SizedBox()
+                ]
+              )
             ),
             Container(
               color: Color(colorArray[1]),
@@ -81,6 +80,8 @@ class _AppShellState extends State<AppShell> {
           ],
         ),
       ),
+      floatingActionButtonLocation:    
+      FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingButtons(counterHandle: _counterHandle),
     );
   }
@@ -97,22 +98,11 @@ class FloatingButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(mainAxisAlignment: MainAxisAlignment.end, children: <Widget>[
-      FloatingActionButton(
-        onPressed: _counterHandle.incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-        backgroundColor: Color(0xff72EDE0),
-      ),
-      SizedBox(
-        height: 5,
-      ),
-      FloatingActionButton(
-        onPressed: _counterHandle.decrementCounter,
-        tooltip: 'Decrement',
-        child: Icon(Icons.remove),
-        backgroundColor: Color(0xff72EDE0),
-      ),
-    ]);
+    return FloatingActionButton(
+      onPressed: _counterHandle.decrementCounter,
+      tooltip: 'Decrement',
+      child: Icon(Icons.keyboard_arrow_down),
+      backgroundColor: Color(0xff72EDE0),
+    );
   }
 }
